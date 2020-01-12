@@ -28,10 +28,6 @@ public class War {
         return hands.values().stream().anyMatch(hand -> hand.size() == totalCards);
     }
 
-    public void previewBattle() {
-
-    }
-
     public void battle() {
         // Get the best card
         battleHelper(hands);
@@ -72,11 +68,41 @@ public class War {
         return winner;
     }
 
+    public String toString() {
+        String result = "Current hands: \n";
+        for (int player : hands.keySet()) {
+            result += String.format("\tPlayer %d is holding %s", player, hands.get(player).toString());
+        }
+        return result;
+    }
+
     public static void play(int numberOfSuits, int numberOfRanks, int numberOfPlayers) {
         War war = new War(numberOfSuits, numberOfRanks, numberOfPlayers);
 
         while (!war.isOver()) {
+            System.out.println(war);
             war.battle();
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Welcome to War!");
+        boolean keepPlaying = true;
+        while (keepPlaying) {
+            System.out.println("Starting a war...");
+
+            System.out.print("Number of suits? ");
+            int suits = in.nextInt();
+            System.out.print("Number of ranks? ");
+            int ranks = in.nextInt();
+            System.out.print("Number of players? ");
+            int players = in.nextInt();
+
+            play(suits, ranks, players);
+
+            System.out.println("Play again? (y to continue) ");
+            keepPlaying = in.next().toLowerCase().startsWith("y");
         }
     }
 }

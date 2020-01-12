@@ -9,18 +9,9 @@ public class Card implements Comparable<Card> {
         this.rank = rank;
     }
 
-    // todo use lombok instead?
-    public int getSuit() {
-        return suit;
-    }
-
-    public int getRank() {
-        return rank;
-    }
-
     @Override
     public int compareTo(Card card) {
-        return this.getRank() - card.getRank();
+        return this.rank - card.rank;
     }
 
     @Override
@@ -29,7 +20,7 @@ public class Card implements Comparable<Card> {
             return false;
         } else if (obj instanceof Card) {
             Card otherCard = (Card) obj;
-            return otherCard.getRank() == this.getRank();
+            return otherCard.rank == this.rank;
         } else {
             return false;
         }
