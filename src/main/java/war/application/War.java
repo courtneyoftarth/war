@@ -10,6 +10,12 @@ public class War {
     private final Map<Integer, Queue<Card>> hands;
     private final int totalCards;
 
+    /**
+     * Initializes a game of War
+     * @param numberOfSuits Number of suits to use
+     * @param numberOfRanks Number of ranks to use
+     * @param numberOfPlayers Number of players
+     */
     public War(int numberOfSuits, int numberOfRanks, int numberOfPlayers) {
         Deck deck = new Deck(numberOfSuits, numberOfRanks);
         deck.shuffle();
@@ -27,15 +33,30 @@ public class War {
         }
     }
 
+    /**
+     * Checks if the game is over. The game ends when one person has all the cards.
+     * @return True if the game is over, false otherwise.
+     */
     public boolean isOver() {
         return hands.values().stream().anyMatch(hand -> hand.size() == totalCards);
     }
 
+    /**
+     * Plays a single battle.
+     * A battle is when everyone flips over a card and the person with the highest card takes all the flipped cards.
+     * When there is a tie, everyone who tied burns a card and flips another to compare.
+     * Whoever ultimately wins the tie takes all the played and burned cards.
+     */
     public void battle() {
         // Get the best card
         battleHelper(hands);
     }
 
+    /**
+     * Plays a battle with the given hands.
+     * @param hands Map from player id to that player's hand of cards
+     * @return The winning player id
+     */
     private int battleHelper(Map<Integer, Queue<Card>> hands) {
         Map<Integer, Card> playedCards = new HashMap<>();
         for (int i = 0; i < hands.size(); i++) {
@@ -71,6 +92,9 @@ public class War {
         return winner;
     }
 
+    /**
+     * @return A string representation of the game's current state
+     */
     public String toString() {
         String result = "Current hands: \n";
         for (int player : hands.keySet()) {
@@ -79,6 +103,12 @@ public class War {
         return result;
     }
 
+    /**
+     * Plays an entire game of war.
+     * @param numberOfSuits Number of suits
+     * @param numberOfRanks Number of ranks
+     * @param numberOfPlayers Number of players
+     */
     public static void play(int numberOfSuits, int numberOfRanks, int numberOfPlayers) {
         War war = new War(numberOfSuits, numberOfRanks, numberOfPlayers);
 
@@ -88,6 +118,9 @@ public class War {
         }
     }
 
+    /**
+     * Play War in the command line.
+     */
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Welcome to War!");
