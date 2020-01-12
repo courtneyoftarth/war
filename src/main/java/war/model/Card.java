@@ -36,4 +36,8 @@ public class Card implements Comparable<Card> {
             return false;
         }
     }
+
+    public String toString() {
+        return (char) ('a' + suit) + "" + rank;
+    }
 }

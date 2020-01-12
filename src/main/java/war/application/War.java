@@ -1,4 +1,7 @@
-package war.model;
+package war.application;
+
+import war.model.Card;
+import war.model.Deck;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -71,7 +74,7 @@ public class War {
     public String toString() {
         String result = "Current hands: \n";
         for (int player : hands.keySet()) {
-            result += String.format("\tPlayer %d is holding %s", player, hands.get(player).toString());
+            result += String.format("\tPlayer %d is holding %s\n", player, hands.get(player).toString());
         }
         return result;
     }
@@ -92,11 +95,11 @@ public class War {
         while (keepPlaying) {
             System.out.println("Starting a war...");
 
-            System.out.print("Number of suits? ");
+            System.out.println("Number of suits? ");
             int suits = in.nextInt();
-            System.out.print("Number of ranks? ");
+            System.out.println("Number of ranks? ");
             int ranks = in.nextInt();
-            System.out.print("Number of players? ");
+            System.out.println("Number of players? ");
             int players = in.nextInt();
 
             play(suits, ranks, players);
@@ -104,5 +107,6 @@ public class War {
             System.out.println("Play again? (y to continue) ");
             keepPlaying = in.next().toLowerCase().startsWith("y");
         }
+        System.out.println("Goodbye!");
     }
 }
