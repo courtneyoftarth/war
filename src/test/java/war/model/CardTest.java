@@ -28,6 +28,11 @@ public class CardTest {
         Assert.assertTrue(result < 0);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testCompareTo_Throws_WhenOtherIsNull() {
+        (new Card(1, 1)).compareTo(null);
+    }
+
     @Test
     public void testEquals_ReturnsFalse_WhenOtherIsNull() {
         boolean result = (new Card(1, 12)).equals(null);

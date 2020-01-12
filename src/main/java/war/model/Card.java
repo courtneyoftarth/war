@@ -11,6 +11,9 @@ public class Card implements Comparable<Card> {
 
     @Override
     public int compareTo(Card card) {
+        if (card == null) {
+            throw new IllegalArgumentException("Card.compareTo does not accept null");
+        }
         return this.rank - card.rank;
     }
 
