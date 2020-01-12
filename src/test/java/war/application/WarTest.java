@@ -25,15 +25,16 @@ public class WarTest {
 
     @Test(timeout = 1000)
     public void testWar_EndsEventually_WhenTheresManyRanks() {
-        War war = new War(1, 6, 2);
+        War war = new War(1, 5, 2);
         while (!war.isOver()) {
+            System.out.println(war);
             war.battle();
         }
     }
 
     @Test(timeout = 1000)
     public void testWar_EndsEventually_WhenTheresManyRanksAndSuits() {
-        War war = new War(3, 6, 2);
+        War war = new War(3, 5, 2);
         while (!war.isOver()) {
             war.battle();
         }
