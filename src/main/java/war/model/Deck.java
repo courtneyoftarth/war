@@ -7,7 +7,7 @@ import java.util.List;
 public class Deck {
     private final List<Card> cards;
 
-    public Deck(final int numberOfSuits, final int numberOfRanks) {
+    public Deck(int numberOfSuits, int numberOfRanks) {
         cards = new ArrayList<>();
         for (int i = 0; i < numberOfSuits; i++) {
             for (int j = 0; j < numberOfRanks; j++) {

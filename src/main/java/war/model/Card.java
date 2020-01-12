@@ -9,6 +9,14 @@ public class Card implements Comparable<Card> {
         this.rank = rank;
     }
 
+    public int getSuit() {
+        return suit;
+    }
+
+    public int getRank() {
+            return rank;
+    }
+
     @Override
     public int compareTo(Card card) {
         if (card == null) {

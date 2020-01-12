@@ -8,7 +8,7 @@ public class War {
     private final int totalCards;
 
     public War(int numberOfSuits, int numberOfRanks, int numberOfPlayers) {
-        final Deck deck = new Deck(numberOfSuits, numberOfRanks);
+        Deck deck = new Deck(numberOfSuits, numberOfRanks);
         deck.shuffle();
         totalCards = numberOfSuits * numberOfRanks;
 
